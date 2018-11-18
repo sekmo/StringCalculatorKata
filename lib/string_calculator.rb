@@ -1,9 +1,7 @@
 class StringCalculator
   def self.add(input)
-    return 0 if input.empty?
-
     numbers = numbers_from(input)
-    return numbers.reduce { |m,e| m + e }
+    return numbers.reduce(0) { |m,e| m + e }
   end
 
   def self.numbers_from(string)
