@@ -3,8 +3,6 @@ class StringCalculator
     return 0 if input.empty?
 
     numbers = numbers_from(input)
-    return numbers.first if numbers.size == 1
-
     return numbers.reduce { |m,e| m + e }
   end
 
