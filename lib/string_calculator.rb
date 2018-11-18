@@ -5,7 +5,7 @@ class StringCalculator
     numbers = numbers_from(input)
     return numbers.first if numbers.size == 1
 
-    return numbers[0] + numbers[1] if numbers.size == 2
+    return numbers.reduce { |m,e| m + e }
   end
 
   def self.numbers_from(string)

@@ -13,5 +13,13 @@ describe StringCalculator do
     it 'returns the sum of the numbers if the input is two numbers' do
       expect(StringCalculator.add("42,5")).to eq(47)
     end
+
+    it 'returns the sum of the numbers if the input is three numbers' do
+      expect(StringCalculator.add("1,2,10")).to eq(13)
+    end
+
+    it 'returns the sum of the numbers if the input is six numbers' do
+      expect(StringCalculator.add("5,5,10,2,8,2")).to eq(32)
+    end
   end
 end
