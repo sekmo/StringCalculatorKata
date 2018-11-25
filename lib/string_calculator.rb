@@ -5,6 +5,6 @@ class StringCalculator
   end
 
   def self.numbers_from(string)
-    string.split(",").map(&:to_i)
+    string.split(/[\n,]/).map(&:to_i)
   end
 end

@@ -21,5 +21,9 @@ describe StringCalculator do
     it 'returns the sum of the numbers if the input is six numbers' do
       expect(StringCalculator.add("5,5,10,2,8,2")).to eq(32)
     end
+
+    it 'works also with new lines as delimiters' do
+      expect(StringCalculator.add("1\n2,3")).to eq(6)
+    end
   end
 end
