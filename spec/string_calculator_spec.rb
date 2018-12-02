@@ -25,5 +25,18 @@ describe StringCalculator do
     it 'works also with new lines as delimiters' do
       expect(StringCalculator.add("1\n2,3")).to eq(6)
     end
+
+    it 'has configurable delimiters' do
+      expect(StringCalculator.add("//;\n1;2")).to eq(3)
+      expect(StringCalculator.add("//+\n1+2")).to eq(3)
+    end
+  end
+
+  describe 'delimiters_from' do
+    it 'returns the delimiters including the custom one' do
+      expect(StringCalculator.delimiters_from("//;\n1;2")).to eq(["\n", ",", ";"])
+      expect(StringCalculator.delimiters_from("//+\n1+2")).to eq(["\n", ",", "+"])
+      expect(StringCalculator.delimiters_from("1,2,3")).to eq(["\n", ","])
+    end
   end
 end
