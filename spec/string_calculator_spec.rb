@@ -30,6 +30,11 @@ describe StringCalculator do
       expect(StringCalculator.add("//;\n1;2")).to eq(3)
       expect(StringCalculator.add("//+\n1+2")).to eq(3)
     end
+
+    it 'throws exception with negative numbers' do
+      expect { (StringCalculator.add("-1,2")) }.to raise_exception("negatives not allowed: -1")
+      expect { (StringCalculator.add("//;\n-1;2;-6")) }.to raise_exception("negatives not allowed: -1, -6")
+    end
   end
 
   describe 'delimiters_from' do
@@ -37,6 +42,12 @@ describe StringCalculator do
       expect(StringCalculator.delimiters_from("//;\n1;2")).to eq(["\n", ",", ";"])
       expect(StringCalculator.delimiters_from("//+\n1+2")).to eq(["\n", ",", "+"])
       expect(StringCalculator.delimiters_from("1,2,3")).to eq(["\n", ","])
+    end
+  end
+
+  describe 'negatives_from' do
+    it "returns the negative numbers" do
+      expect(StringCalculator.negatives_in([1, -1, 2, -5])).to eq([-1, -5])
     end
   end
 end

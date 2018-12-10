@@ -4,7 +4,13 @@ class StringCalculator
 
   def self.add(input)
     numbers = numbers_from(input)
+    negatives = negatives_in(numbers)
+    raise "negatives not allowed: #{negatives.join(", ")}" if negatives.any?
     return numbers.reduce(0) { |m,e| m + e }
+  end
+
+  def self.negatives_in(numbers)
+    numbers.select { |number| number < 0}
   end
 
   def self.numbers_from(string)
