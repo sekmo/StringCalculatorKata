@@ -15,7 +15,11 @@ class StringCalculator
 
   def self.numbers_from(string)
     numbers_subtring = string.match(NUMBERS_AND_DELIMITERS_REGEX).to_a[2]
-    numbers_subtring.split(/[#{delimiters_from(string).join}]/).map(&:to_i)
+    small_numbers_from(numbers_subtring.split(/[#{delimiters_from(string).join}]/).map(&:to_i))
+  end
+
+  def self.small_numbers_from(numbers)
+    numbers.select { |n| n <= 1000 }
   end
 
   def self.delimiters_from(string)

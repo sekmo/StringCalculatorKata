@@ -35,6 +35,11 @@ describe StringCalculator do
       expect { (StringCalculator.add("-1,2")) }.to raise_exception("negatives not allowed: -1")
       expect { (StringCalculator.add("//;\n-1;2;-6")) }.to raise_exception("negatives not allowed: -1, -6")
     end
+
+    it "ignores numbers larger than 1000" do
+      expect(StringCalculator.add("1000,2")).to eq(1002)
+      expect(StringCalculator.add("1001,2")).to eq(2)
+    end
   end
 
   describe 'delimiters_from' do
