@@ -40,6 +40,15 @@ describe StringCalculator do
       expect(StringCalculator.add("1000,2")).to eq(1002)
       expect(StringCalculator.add("1001,2")).to eq(2)
     end
+
+    it "handles delimiters of any length" do
+      expect(StringCalculator.add("//[;;;]\n1;;;2")).to eq(3)
+      expect(StringCalculator.add("//[xxxxx]\n1xxxxx2")).to eq(3)
+    end
+
+    it "handles multiple custom delimiters" do
+      expect(StringCalculator.add("//[*][%]\n1*2%3")).to eq(6)
+    end
   end
 
   describe "delimiters_from" do
