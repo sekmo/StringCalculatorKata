@@ -49,6 +49,10 @@ describe StringCalculator do
     it "handles multiple custom delimiters" do
       expect(StringCalculator.add("//[*][%]\n1*2%3")).to eq(6)
     end
+
+    it "handles multiple custom delimiters of any length" do
+      expect(StringCalculator.add("//[***][%%]\n1***2%%3")).to eq(6)
+    end
   end
 
   describe "delimiters_from" do
